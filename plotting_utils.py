@@ -3,10 +3,10 @@ import constants
 import pandas as pd
 import matplotlib.pyplot as plt
 
-problem_name = "kcolors"
+problem_name = "tsp"
 type = "curves"
 
-problem_size = 50
+problem_size = 30
 
 
 if False:
@@ -24,16 +24,16 @@ if False:
         df = pd.read_csv(path)
         d[algorithm_name] = {}
         d[algorithm_name]["X"] = df["Iteration"]
-        d[algorithm_name]["Y"] = df["Fitness"]
+        d[algorithm_name]["Y"] = df["Fitness"] * -1
         plt.plot(d[algorithm_name]["X"], d[algorithm_name]["Y"], label=algorithm_name)
 
     plt.xlim(0, 300)
     plt.legend()
     plt.show()
 
-problem_name = "kcolors"
+problem_name = "tsp"
 type = "curves"
-problem_sizes = [10, 25, 50, 75, 100]
+problem_sizes = [10, 30, 50]
 colors = ["bo", "yx", "g.", "r."]
 
 if True:
@@ -51,11 +51,11 @@ if True:
             path = '{0}/{1}'.format(dir, filename)
 
             df = pd.read_csv(path)
-            d[algorithm_name].append(df["Fitness"].min())
+            d[algorithm_name].append(df["Fitness"].min() * -1)
 
     for index, algorithm_name in enumerate(constants.algorithm_names):
         plt.plot(problem_sizes, d[algorithm_name], colors[index], label=algorithm_name)
 
-    plt.xlim(5, 105)
+    plt.xlim(5, 55)
     plt.legend()
     plt.show()
