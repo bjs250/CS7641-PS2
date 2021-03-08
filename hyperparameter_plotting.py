@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 problem_name = "tsp"
-algorithm_name = "MIMIC"
+algorithm_name = "GA"
 type = "run_stats"
 
 if problem_name == "kcolors":
@@ -43,17 +43,17 @@ if algorithm_name == "SA" and True:
 if algorithm_name == "GA" and True:
     d = {}
     pop_sizes = [10, 50, 100, 200]
-    mutation_rates = [0.05, 0.2, 0.3, 0.4]
-    colors = ["b-", "g-", "c-", "m-", "r-"]
-    for index, param in enumerate(pop_sizes):
-        df2 = df[df["Population Size"].isin([param])]
-        df2 = df2[df2["Mutation Rate"].isin([0.2])]
+    mutation_rates = [0.05, 0.1, 0.2, 0.3]
+    colors = ["b-", "g-", "c-", "m-"]
+    for index, param in enumerate(mutation_rates):
+        df2 = df[df["Population Size"].isin([200])]
+        df2 = df2[df2["Mutation Rate"].isin([param])]
         print(df2)
 
         d[param] = {}
         d[param]["X"] = df2["Iteration"]
         d[param]["Y"] = df2["Fitness"] * -1
-        plt.plot(d[param]["X"][0:7], d[param]["Y"][0:7], colors[index], label="{0}:{1}".format("Pop Size", param))
+        plt.plot(d[param]["X"], d[param]["Y"], colors[index], label="{0}:{1}".format("Mutation Rate", param))
 
 
 if algorithm_name == "MIMIC" and True:

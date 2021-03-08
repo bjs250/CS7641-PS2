@@ -7,7 +7,7 @@ from mlrose_hiive.algorithms import ExpDecay
 import matplotlib.pyplot as plt
 
 problem_name = "TSP"
-algorithm_name = "MIMIC"
+algorithm_name = "GA"
 problem_size = 30
 
 experiment_name = '{0}-{1}-{2}-experiment'.format(problem_name, algorithm_name, problem_size)
@@ -43,8 +43,8 @@ if algorithm_name == "SA" and False:
                   decay_list=[ExpDecay])
     sa_run_stats, sa_run_curves = sa.run()
 
-if algorithm_name == "GA" and False:
-    population_sizes = [10, 50, 100, 200]
+if algorithm_name == "GA" and True:
+    population_sizes = [200]
     mutation_rates = [0.05, 0.1, 0.2, 0.3, 0.4]
     ga = GARunner(problem=problem,
                   experiment_name=experiment_name,
